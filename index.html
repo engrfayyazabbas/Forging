@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forging – Complete Study Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress-bar" id="prog"></div>
+<div class="page-wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Manufacturing Processes</div>
+  <h1>Metal <span>Forging</span><br>Complete Study Notes</h1>
+  <p>Exam-ready guide covering all processes, formulas, equipment, defects, and die design with worked examples.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Topics</div></div>
+    <div class="stat"><div class="stat-n">8</div><div class="stat-l">Key Formulas</div></div>
+    <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Exam Tips</div></div>
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Quiz Questions</div></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('intro',this)">01 Introduction</button>
+  <button class="tab-btn" onclick="switchTab('types',this)">02 Forging Types</button>
+  <button class="tab-btn" onclick="switchTab('analysis',this)">03 Force Analysis</button>
+  <button class="tab-btn" onclick="switchTab('ops',this)">04 Other Operations</button>
+  <button class="tab-btn" onclick="switchTab('equip',this)">05 Equipment</button>
+  <button class="tab-btn" onclick="switchTab('die',this)">06 Die Design</button>
+  <button class="tab-btn" onclick="switchTab('defects',this)">07 Defects</button>
+  <button class="tab-btn" onclick="switchTab('formulasheet',this)">08 Formula Sheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz',this)">09 Quiz</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 1: INTRO -->
+<div class="tab-content active" id="tab-intro">
+  <div class="sec-title">What is Forging?</div>
+  <div class="sec-sub">Overview, history, classification, and advantages</div>
+
+  <div class="card">
+    <div class="card-title amber">Core Definition</div>
+    <p>Forging is a <em class="k">deformation process</em> in which the workpiece is <em class="k">compressed between two dies</em> using either impact or gradual pressure to form the part. It is one of the oldest manufacturing processes — dating back to <em class="k">~4000–5000 BCE</em>.</p>
+  </div>
+
+  <div class="exam-tip">
+    <div class="tip-icon">★</div>
+    <div class="tip-text"><strong>Exam Tip:</strong> Forging produces parts with <em class="k">controlled grain flow</em>, giving superior strength, toughness, and fatigue resistance compared to casting or machining. This is a favourite comparison question.</div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <div class="card-title teal">Key Applications</div>
+      <ul style="padding-left:18px;line-height:2.1;font-size:13px;color:var(--muted)">
+        <li>Engine crankshafts &amp; connecting rods</li>
+        <li>Gears, turbine blades</li>
+        <li>Aircraft structural parts</li>
+        <li>Hand tools, cutlery, bolts</li>
+        <li>Landing gear components</li>
+        <li>Ship propeller shafts (up to 23 m!)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title coral">Advantages of Forging</div>
+      <ul style="padding-left:18px;line-height:2.1;font-size:13px;color:var(--muted)">
+        <li>Favorable grain flow orientation</li>
+        <li>Higher strength &amp; toughness</li>
+        <li>Better than casting for critical parts</li>
+        <li>Conservation of material</li>
+        <li>High production rates (automated)</li>
+        <li>Near net-shape possible (precision)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec-title" style="font-size:22px">Temperature Classification</div>
+  <div class="grid3" style="margin-top:12px">
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <div class="card-title blue">Cold Forging</div>
+      <p style="font-size:13px;color:var(--muted)">Performed at <em class="k">room temperature</em>. Requires higher forces, but produces excellent surface finish, dimensional accuracy, and strain hardening.</p>
+      <div class="exam-tip" style="margin-top:12px;padding:8px 12px">
+        <div class="tip-text"><strong>↑ Strength</strong> due to work hardening</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--amber)">
+      <div class="card-title amber">Warm Forging</div>
+      <p style="font-size:13px;color:var(--muted)">Between room temp and hot forging. Reduces forces while retaining some strain hardening benefits. Al alloys: 200–300°C, Steels: 550–750°C.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--coral)">
+      <div class="card-title coral">Hot Forging</div>
+      <p style="font-size:13px;color:var(--muted)">Most common. <em class="k">Above recrystallization temperature</em>. Lower forces needed, better ductility. Poorer surface finish than cold forging.</p>
+      <div class="exam-tip" style="margin-top:12px;padding:8px 12px">
+        <div class="tip-text"><strong>n = 0</strong> (perfectly plastic) in hot forging, so Yf = Y (yield strength)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Load Application: Hammers vs Presses</div>
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <div class="card-title amber">Forging Hammer</div>
+      <p style="font-size:13px;color:var(--muted)">Applies <em class="k">impact load</em> (sudden). Also called drop hammer. Energy limited. Operates at high speed — reduces cooling of hot forging.</p>
+    </div>
+    <div class="card">
+      <div class="card-title teal">Forging Press</div>
+      <p style="font-size:13px;color:var(--muted)">Applies <em class="k">gradual pressure</em>. Includes mechanical, hydraulic, and screw presses. Better for precision work.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 2: TYPES -->
+<div class="tab-content" id="tab-types">
+  <div class="sec-title">Types of Forging</div>
+  <div class="sec-sub">Three main classifications by die constraint + precision forging</div>
+
+  <div class="type-selector">
+    <button class="type-btn sel" onclick="showType('open',this)">Open-Die Forging</button>
+    <button class="type-btn" onclick="showType('impression',this)">Impression-Die Forging</button>
+    <button class="type-btn" onclick="showType('flashless',this)">Flashless Forging</button>
+    <button class="type-btn" onclick="showType('precision',this)">Precision Forging</button>
+  </div>
+
+  <!-- OPEN DIE -->
+  <div class="type-detail show" id="type-open">
+    <div class="card">
+      <div class="card-title amber">Open-Die Forging (Upset Forging)</div>
+      <p style="margin-bottom:12px;">Work is compressed between <em class="k">two flat (or nearly flat) dies</em>. Metal flows without lateral constraint — free to spread outward. Simplest type.</p>
+
+      <div class="diagram-wrap">
+        <svg width="100%" viewBox="0 0 680 220">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <!-- State 1 -->
+          <rect x="45" y="20" width="140" height="24" rx="4" fill="#3ecfb2" opacity=".25" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="115" y="36" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" fill="#3ecfb2">Upper die</text>
+          <rect x="55" y="50" width="120" height="80" rx="6" fill="#5b8dee" opacity=".3" stroke="#5b8dee" stroke-width="1"/>
+          <text x="115" y="95" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" fill="#fff">Workpiece</text>
+          <rect x="45" y="136" width="140" height="24" rx="4" fill="#3ecfb2" opacity=".25" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="115" y="152" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" fill="#3ecfb2">Lower die</text>
+          <text x="115" y="180" text-anchor="middle" font-family="Sora,sans-serif" font-size="12" fill="#8892a4">Initial</text>
+          <line x1="115" y1="44" x2="115" y2="52" stroke="#f0a843" stroke-width="2" marker-end="url(#arr)"/>
+
+          <!-- State 2 -->
+          <rect x="240" y="20" width="140" height="24" rx="4" fill="#3ecfb2" opacity=".25" stroke="#3ecfb2" stroke-width="1"/>
+          <rect x="248" y="50" width="124" height="50" rx="6" fill="#5b8dee" opacity=".35" stroke="#5b8dee" stroke-width="1"/>
+          <text x="310" y="79" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" fill="#fff">Barreling</text>
+          <rect x="240" y="106" width="140" height="24" rx="4" fill="#3ecfb2" opacity=".25" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="310" y="152" text-anchor="middle" font-family="Sora,sans-serif" font-size="12" fill="#8892a4">Partial</text>
+          <line x1="310" y1="44" x2="310" y2="52" stroke="#f0a843" stroke-width="2" marker-end="url(#arr)"/>
+
+          <!-- State 3 -->
+          <rect x="430" y="20" width="200" height="24" rx="4" fill="#3ecfb2" opacity=".25" stroke="#3ecfb2" stroke-width="1"/>
+          <rect x="435" y="50" width="190" height="34" rx="6" fill="#5b8dee" opacity=".4" stroke="#5b8dee" stroke-width="1"/>
+          <text x="530" y="71" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" fill="#fff">Final (wider, shorter)</text>
+          <rect x="430" y="90" width="200" height="24" rx="4" fill="#3ecfb2" opacity=".25" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="530" y="152" text-anchor="middle" font-family="Sora,sans-serif" font-size="12" fill="#8892a4">Final</text>
+          <line x1="530" y1="44" x2="530" y2="52" stroke="#f0a843" stroke-width="2" marker-end="url(#arr)"/>
+          <!-- barrel arrows -->
+          <line x1="625" y1="67" x2="636" y2="67" stroke="#f07060" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="425" y1="67" x2="414" y2="67" stroke="#f07060" stroke-width="1.5" marker-end="url(#arr)"/>
+          <text x="671" y="71" font-family="Sora,sans-serif" font-size="10" fill="#f07060">D↑</text>
+        </svg>
+        <div class="diagram-label">Open-die upsetting — height decreases, diameter increases, barreling due to friction</div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--amber);margin-bottom:6px;">Barreling Effect</p>
+          <p style="font-size:13px;color:var(--muted);">Friction at die-workpiece interface resists outward flow at surface, causing the barrel shape. Worse in hot forging with cold dies (thermal gradient + higher μ).</p>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--teal);margin-bottom:6px;">Related Operations</p>
+          <ul style="padding-left:16px;font-size:13px;color:var(--muted);line-height:1.9">
+            <li><strong style="color:#fff">Fullering</strong> – convex dies, redistribute metal</li>
+            <li><strong style="color:#fff">Edging</strong> – concave dies, gather metal</li>
+            <li><strong style="color:#fff">Cogging</strong> – sequential compression along length</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="exam-tip">
+      <div class="tip-icon">★</div>
+      <div class="tip-text"><strong>Exam Tip:</strong> Open-die forgings have simple shapes (shafts, disks, rings). They create favorable grain structure but require more machining. Key benefit: any size range, from pins to 275-metric-ton forgings.</div>
+    </div>
+  </div>
+
+  <!-- IMPRESSION DIE -->
+  <div class="type-detail" id="type-impression">
+    <div class="card">
+      <div class="card-title blue">Impression-Die Forging (Closed-Die Forging)</div>
+      <p style="margin-bottom:14px;">Dies contain the <em class="k">inverse shape</em> of the desired part. Work takes the shape of the die cavity. A portion of metal flows into the gap forming <em class="k">flash</em>.</p>
+
+      <div class="diagram-wrap">
+        <svg width="100%" viewBox="0 0 680 240">
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <!-- Stage 1: Initial -->
+          <rect x="30" y="14" width="160" height="32" rx="4" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <path d="M75 46 Q115 50 155 46" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <rect x="50" y="52" width="110" height="70" rx="6" fill="#5b8dee" opacity=".35" stroke="#5b8dee" stroke-width="1"/>
+          <rect x="30" y="128" width="160" height="32" rx="4" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="110" y="185" text-anchor="middle" font-family="Sora" font-size="11" fill="#8892a4">Before contact</text>
+          <line x1="110" y1="35" x2="110" y2="52" stroke="#f0a843" stroke-width="2" marker-end="url(#arr2)"/>
+
+          <!-- Stage 2: Partial -->
+          <rect x="240" y="14" width="180" height="30" rx="4" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <path d="M270 44 Q330 60 390 44" fill="#3ecfb2" opacity=".12" stroke="#3ecfb2" stroke-width="1"/>
+          <ellipse cx="330" cy="80" rx="70" ry="38" fill="#5b8dee" opacity=".4" stroke="#5b8dee" stroke-width="1"/>
+          <rect x="240" y="118" width="180" height="30" rx="4" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="330" y="185" text-anchor="middle" font-family="Sora" font-size="11" fill="#8892a4">Partial compression</text>
+          <line x1="330" y1="37" x2="330" y2="50" stroke="#f0a843" stroke-width="2" marker-end="url(#arr2)"/>
+
+          <!-- Stage 3: Final + Flash -->
+          <rect x="470" y="14" width="190" height="28" rx="4" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <path d="M490 42 Q565 65 640 42" fill="#3ecfb2" opacity=".15" stroke="#3ecfb2" stroke-width="0.5"/>
+          <ellipse cx="565" cy="72" rx="80" ry="22" fill="#5b8dee" opacity=".45" stroke="#5b8dee" stroke-width="1"/>
+          <!-- Flash left and right -->
+          <rect x="470" y="62" width="10" height="10" rx="2" fill="#f0a843" opacity=".7"/>
+          <rect x="645" y="62" width="10" height="10" rx="2" fill="#f0a843" opacity=".7"/>
+          <text x="452" y="72" font-family="Sora" font-size="10" fill="#f0a843" text-anchor="end">Flash</text>
+          <rect x="470" y="94" width="190" height="28" rx="4" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+          <text x="565" y="155" text-anchor="middle" font-family="Sora" font-size="11" fill="#8892a4">Final — flash forms</text>
+          <line x1="565" y1="35" x2="565" y2="50" stroke="#f0a843" stroke-width="2" marker-end="url(#arr2)"/>
+        </svg>
+        <div class="diagram-label">Impression-die forging sequence — flash forms in the gap between die plates</div>
+      </div>
+
+      <div class="card" style="background:var(--bg2);margin-top:0">
+        <div class="card-title amber">Role of Flash — Critical Concept!</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Flash begins to form in the gap</h4>
+              <p>Metal flows outward toward the parting line</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Friction resists further flow into gap</h4>
+              <p>High pressure + friction hill effect constrains bulk material to remain in die cavity</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>In hot forging: flash cools rapidly</h4>
+              <p>Thin flash against cold dies increases resistance to deformation → further pressure buildup</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Result: Die cavity filled completely</h4>
+              <p>High pressure forces material into intricate details → high-quality product</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="exam-tip">
+      <div class="tip-icon">★</div>
+      <div class="tip-text"><strong>Exam Favourite:</strong> Flash serves a FUNCTIONAL purpose — it restricts metal outflow and increases internal pressure so the die fills completely. It is NOT simply waste. Flash is later trimmed off in a trimming operation.</div>
+    </div>
+  </div>
+
+  <!-- FLASHLESS -->
+  <div class="type-detail" id="type-flashless">
+    <div class="card">
+      <div class="card-title green">Flashless (True Closed-Die) Forging</div>
+      <p style="margin-bottom:12px;">Workpiece is <em class="k">completely contained</em> within the die cavity. No flash forms. Volume of blank must <em class="k">precisely match</em> die cavity volume.</p>
+
+      <div class="grid2">
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:8px;">Requirements</p>
+          <ul style="padding-left:16px;font-size:13px;color:var(--muted);line-height:2">
+            <li>Very precise blank volume control</li>
+            <li>Simple, symmetrical part geometries</li>
+            <li>Best for Al, Mg alloys</li>
+            <li>Often classified as precision forging</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--coral);margin-bottom:8px;">Risks</p>
+          <ul style="padding-left:16px;font-size:13px;color:var(--muted);line-height:2">
+            <li>Blank too large → die/press damage</li>
+            <li>Blank too small → incomplete cavity fill</li>
+          </ul>
+          <div class="exam-tip" style="margin-top:12px;padding:8px 12px">
+            <div class="tip-text"><strong>Special Case:</strong> Coining is a flashless forging — fine surface details, Kf = 6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="memory-tip">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Memory Aid:</strong> Think "NO flash → NO forgiveness." Flashless forging has zero tolerance for volume errors — if volume is off, disaster strikes either the die or the part quality.</div>
+    </div>
+  </div>
+
+  <!-- PRECISION -->
+  <div class="type-detail" id="type-precision">
+    <div class="card">
+      <div class="card-title purple">Precision Forging (Net-Shape / Near-Net-Shape)</div>
+      <p style="margin-bottom:12px;">Advanced impression-die forging producing <em class="k">thinner sections, closer tolerances</em>, and <em class="k">minimal machining allowance</em>. May still have small flash.</p>
+
+      <table class="data-table">
+        <tr><th>Feature</th><th>Conventional Forging</th><th>Precision Forging</th></tr>
+        <tr><td>Flash</td><td>Significant</td><td>Minimal or none</td></tr>
+        <tr><td>Draft angle</td><td>3–7°</td><td>Near zero</td></tr>
+        <tr><td>Tolerance</td><td>±6 mm (hot forging)</td><td>±0.25 mm</td></tr>
+        <tr><td>Machining</td><td>Required for final shape</td><td>Minimal or eliminated</td></tr>
+        <tr><td>Die cost</td><td>Lower</td><td>Higher</td></tr>
+        <tr><td>Best materials</td><td>Steel, most metals</td><td>Al, Mg, Ti</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Quick Comparison Table</div>
+  <table class="data-table" style="margin-top:12px">
+    <tr><th>Process</th><th>Flash?</th><th>Shape Complexity</th><th>Tolerances</th><th>Die Cost</th><th>Best For</th></tr>
+    <tr><td>Open-die</td><td><span class="badge badge-teal">No</span></td><td>Simple</td><td>Poor</td><td>Low</td><td>Large, simple shapes</td></tr>
+    <tr><td>Impression-die</td><td><span class="badge badge-coral">Yes</span></td><td>Moderate–complex</td><td>±0.5–1%</td><td>High</td><td>Complex shapes, high qty</td></tr>
+    <tr><td>Flashless</td><td><span class="badge badge-teal">No</span></td><td>Simple–moderate</td><td>Good</td><td>High</td><td>Al/Mg, symmetrical</td></tr>
+    <tr><td>Precision</td><td><span class="badge badge-amber">Minimal</span></td><td>Very complex</td><td>±0.25 mm</td><td>Very high</td><td>Gears, turbine blades</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 3: ANALYSIS -->
+<div class="tab-content" id="tab-analysis">
+  <div class="sec-title">Force & Strain Analysis</div>
+  <div class="sec-sub">All key formulas with worked examples — the most exam-tested section</div>
+
+  <div class="card">
+    <div class="card-title amber">1. True Strain in Open-Die Forging</div>
+    <div class="formula-box">
+      <div class="eq-label">True Strain</div>
+      <div class="eq">ε = ln(h₀ / h)</div>
+      <div class="where">
+        h₀ = initial height (mm or in)<br>
+        h = current height at any point in process<br>
+        Maximum strain reached when h = hf (final height)
+      </div>
+    </div>
+    <div class="exam-tip" style="margin-top:8px">
+      <div class="tip-icon">★</div>
+      <div class="tip-text"><strong>Note:</strong> In hot forging, n = 0 (perfectly plastic), so Yf = Y = constant. In cold forging, Yf = Kεⁿ increases with strain.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title amber">2. Basic Upsetting Force (Ideal — No Friction)</div>
+    <div class="formula-box">
+      <div class="eq-label">Force — Ideal Conditions</div>
+      <div class="eq">F = Yf × A</div>
+      <div class="where">
+        F = forging force (N or lb)<br>
+        Yf = flow stress at current strain = Kεⁿ (MPa)<br>
+        A = cross-sectional area at current height (mm²)<br>
+        <br>
+        Note: A = V/h (from constant volume), where V = initial volume
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title amber">3. Force with Friction — Shape Factor (Most Important!)</div>
+    <div class="formula-box">
+      <div class="eq-label">Upsetting Force with Friction (Open-Die)</div>
+      <div class="eq">F = Kf × Yf × A</div>
+      <div class="eq" style="margin-top:10px">Kf = 1 + (0.4μD/h)</div>
+      <div class="where">
+        Kf = forging shape factor (accounts for friction and D/h ratio)<br>
+        μ = coefficient of friction between work and die<br>
+        D = workpart diameter (or contact length dimension) mm<br>
+        h = current workpart height mm<br>
+        Yf = flow stress MPa &nbsp;|&nbsp; A = cross-sectional area mm²
+      </div>
+    </div>
+    <div class="exam-tip">
+      <div class="tip-icon">★</div>
+      <div class="tip-text"><strong>Key Insight:</strong> As h decreases and D increases, <em class="k">Kf increases</em>, meaning the forging force increases sharply near the end of the stroke — even beyond what Yf×A alone predicts. Maximum force is always at the END of the stroke.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title blue">4. Impression-Die Forging Force</div>
+    <div class="formula-box">
+      <div class="eq-label">Impression/Flashless Force</div>
+      <div class="eq">F = Kf × Yf × A</div>
+      <div class="where">
+        SAME formula — different interpretation:<br>
+        A = projected area of the part INCLUDING flash (mm²)<br>
+        Kf = shape factor from table (not the friction equation)<br>
+        Yf = flow stress at forging temperature
+      </div>
+    </div>
+    <table class="data-table" style="margin-top:12px">
+      <tr><th>Part Shape</th><th>Kf Value</th></tr>
+      <tr><td>Simple shapes, without flash (flashless)</td><td><span class="badge badge-teal">3–5</span></td></tr>
+      <tr><td>Simple shapes, with flash</td><td><span class="badge badge-amber">5–8 (or 6.0)</span></td></tr>
+      <tr><td>Complex shapes, with flash</td><td><span class="badge badge-amber">8–12 (or 8.0)</span></td></tr>
+      <tr><td>Very complex shapes with flash</td><td><span class="badge badge-coral">10.0</span></td></tr>
+      <tr><td>Coining (flashless, top &amp; bottom)</td><td><span class="badge badge-coral">6.0</span></td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title teal">5. Friction Hill (Pressure Distribution)</div>
+    <div class="formula-box">
+      <div class="eq-label">Die Pressure at any radius r</div>
+      <div class="eq">p = Y × e^(2μ(r₀ - r)/h)</div>
+      <div class="where">
+        p = die pressure at radius r<br>
+        Y = flow stress of material<br>
+        r₀ = outer radius of workpiece<br>
+        r = radius at point of interest<br>
+        At r = r₀ (outer edge): p = Y (minimum)<br>
+        At r = 0 (center): p = maximum (highest pressure at center)
+      </div>
+    </div>
+    <div class="memory-tip">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Friction Hill:</strong> Pressure distribution is NOT uniform — it peaks at the center and decreases toward the outer edge. This bell-shaped curve is called the "friction hill."</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title coral">6. Hubbing Force</div>
+    <div class="formula-box">
+      <div class="eq-label">Hubbing Force</div>
+      <div class="eq">F = 3 × UTS × A</div>
+      <div class="where">
+        UTS = ultimate tensile strength of material (MPa)<br>
+        A = projected area of the impression (mm²)
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Worked Example — Open-Die Forging</div>
+  <div class="card" style="border-left:3px solid var(--blue)">
+    <div class="card-title blue">Example Problem (from Textbook)</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">A cylindrical workpiece is cold upset forged. Starting: h₀ = 75 mm, D₀ = 50 mm. Reduced to hf = 36 mm. Flow curve: K = 350 MPa, n = 0.17. μ = 0.1. Find force at h = 62 mm.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Find volume (constant throughout)</h4>
+          <p>V = π × (50²/4) × 75 = 147,262 mm³</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Calculate true strain at h = 62 mm</h4>
+          <p>ε = ln(75/62) = ln(1.21) = 0.190</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Calculate flow stress Yf</h4>
+          <p>Yf = Kεⁿ = 350 × (0.190)^0.17 = <em class="k">264 MPa</em></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Find new area and diameter (constant volume)</h4>
+          <p>A = V/h = 147,262/62 = 2,375 mm²; D = √(4A/π) = 55.0 mm</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Calculate Kf</h4>
+          <p>Kf = 1 + (0.4 × 0.1 × 55)/62 = 1 + 0.0355 = <em class="k">1.035</em></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Calculate forging force</h4>
+          <p>F = 1.035 × 264 × 2,375 = <em class="k">649,303 N ≈ 649 kN</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="exam-tip" style="margin-top:12px">
+      <div class="tip-icon">★</div>
+      <div class="tip-text"><strong>Pattern to remember:</strong> Force at h = 36 mm (final) was 1,467,422 N. Force increased from ~245 kN to ~1,467 kN as the workpiece was compressed — nearly 6× increase!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 4: OPERATIONS -->
+<div class="tab-content" id="tab-ops">
+  <div class="sec-title">Other Forging Operations</div>
+  <div class="sec-sub">Heading, piercing, cogging, swaging, hubbing, orbital, isothermal, coining</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title amber">Heading (Upset Forging)</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Upsetting operation on the <em class="k">end of a rod/wire</em> to increase cross-section. Makes nails, bolt heads, rivets, fasteners.</p>
+      <div class="exam-tip" style="padding:8px 12px;margin-top:8px">
+        <div class="tip-text"><strong>Key rule:</strong> Unsupported length-to-diameter ratio must be <em class="k">&lt; 3:1</em> to prevent buckling</div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">High production rates (hundreds/min for small parts). Machines: <em class="k">Headers</em> (automated) or horizontal upsetters for large parts.</p>
+    </div>
+    <div class="card">
+      <div class="card-title teal">Piercing</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;"><em class="k">Indenting (not breaking through)</em> the surface with a punch to produce a cavity. Example: hexagonal cavity in bolt heads.</p>
+      <div class="formula-box" style="padding:10px 14px;margin-top:8px">
+        <div class="eq" style="font-size:14px">Piercing pressure = 3–5 × material strength</div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">May be followed by punching to create a through-hole.</p>
+    </div>
+    <div class="card">
+      <div class="card-title coral">Cogging (Drawing Out)</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Sequence of forging compressions along the <em class="k">length of a workpiece</em> using open dies with flat/slightly contoured surfaces. Reduces cross-section, increases length.</p>
+      <p style="font-size:12px;color:var(--muted);">Used in steel industry to produce blooms and slabs from cast ingots. Also called <em class="k">incremental forging</em>.</p>
+    </div>
+    <div class="card">
+      <div class="card-title blue">Coining</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Special closed-die forging impressing <em class="k">fine details</em> into top and bottom surfaces. Little metal flow, but very high pressures (5–6× material strength).</p>
+      <div class="exam-tip" style="padding:8px 12px;margin-top:8px">
+        <div class="tip-text"><strong>No lubricant!</strong> Lubricant gets trapped and prevents full detail reproduction</div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">Kf = 6. Used for coins, medallions, gears, medical devices. Also called <em class="k">sizing</em> when used to improve dimensional accuracy.</p>
+    </div>
+    <div class="card">
+      <div class="card-title green">Rotary Swaging</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Also called radial forging. Rod or tube subjected to <em class="k">radial impact forces</em> by reciprocating dies. Up to 20 strokes/second.</p>
+      <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.9;margin-top:8px">
+        <li>Max workpiece diameter: ~150 mm</li>
+        <li>Tolerances: ±0.05 to ±0.5 mm</li>
+        <li>Makes screwdriver blades, soldering tips, gun barrel rifling</li>
+        <li>Also used for pointing and sizing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title purple">Hubbing</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Pressing a hardened punch into a metal block to create a <em class="k">die cavity</em> used for tableware, small parts.</p>
+      <div class="formula-box" style="padding:10px 14px;margin-top:8px">
+        <div class="eq" style="font-size:14px">F = 3 × UTS × A</div>
+        <div class="where">A = projected area of impression</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Advanced Forging Operations</div>
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <div class="card-title amber">Orbital Forging</div>
+      <p style="font-size:13px;color:var(--muted);">Upper die moves in <em class="k">orbital path</em> (like mortar/pestle). Forms part incrementally — low forces because contact is on small area at any instant. 10–20 cycles per part. Good for disk-shaped, conical parts (bevel gears).</p>
+    </div>
+    <div class="card">
+      <div class="card-title teal">Isothermal Forging (Hot-Die Forging)</div>
+      <p style="font-size:13px;color:var(--muted);">Dies heated to <em class="k">same temperature as workpiece</em>. No heat loss → low forging load, better material flow. Complex shapes in one press stroke. Dies: nickel or molybdenum alloys. Expensive, low production rate — but ideal for Ti, Al, superalloys.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <div class="tip-icon">★</div>
+    <div class="tip-text"><strong>Exam Tip — Swaging vs Cogging:</strong> Both involve progressive deformation. Swaging uses radial reciprocating forces on round bar/tube sections. Cogging uses sequential linear compressions along the length of a bar with open flat dies. Very different mechanisms!</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 5: EQUIPMENT -->
+<div class="tab-content" id="tab-equip">
+  <div class="sec-title">Forging Equipment</div>
+  <div class="sec-sub">Hammers vs presses — characteristics, limitations, speed ranges</div>
+
+  <div class="card">
+    <div class="card-title amber">Forging Hammers — Impact Loading</div>
+    <p style="margin-bottom:12px;">Apply <em class="k">sudden impact</em> loads. Energy limited. High speed minimizes cooling of hot forging. Most versatile, least expensive type.</p>
+
+    <div class="grid3">
+      <div class="compare-col">
+        <h3 style="color:var(--amber)">Gravity Drop</h3>
+        <ul>
+          <li>Energy = weight × drop height</li>
+          <li>Ram: 180–4,500 kg</li>
+          <li>Energy: up to 120 kJ</li>
+          <li>Speed: 3.6–4.8 m/s</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h3 style="color:var(--blue)">Power Drop</h3>
+        <ul>
+          <li>Ram accelerated by steam/air/hydraulic</li>
+          <li>Ram: 225–22,500 kg</li>
+          <li>Energy: up to 1,150 kJ</li>
+          <li>Speed: 3.0–9.0 m/s</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h3 style="color:var(--teal)">Counterblow</h3>
+        <ul>
+          <li>Two rams approach simultaneously</li>
+          <li>Less vibration to foundation</li>
+          <li>Capacity: up to 1,200 kJ</li>
+          <li>Speed: 4.5–9.0 m/s</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exam-tip" style="margin-top:14px">
+      <div class="tip-icon">★</div>
+      <div class="tip-text"><strong>Disadvantage of drop hammers:</strong> Large amount of impact energy transmitted through anvil into building floor. Vibration problem.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title teal">Forging Presses — Gradual Pressure</div>
+    <table class="data-table">
+      <tr><th>Press Type</th><th>Drive</th><th>Limitation Type</th><th>Speed (m/s)</th><th>Best For</th></tr>
+      <tr>
+        <td>Mechanical (crank/eccentric)</td>
+        <td>Flywheel + crank</td>
+        <td><span class="badge badge-amber">Stroke limited</span></td>
+        <td>0.06–1.5</td>
+        <td>High precision, high production</td>
+      </tr>
+      <tr>
+        <td>Hydraulic</td>
+        <td>Hydraulic piston</td>
+        <td><span class="badge badge-coral">Load limited</span></td>
+        <td>0.06–0.30</td>
+        <td>Large, complex parts; long stroke</td>
+      </tr>
+      <tr>
+        <td>Screw</td>
+        <td>Flywheel + screw</td>
+        <td><span class="badge badge-teal">Energy limited</span></td>
+        <td>0.6–1.2</td>
+        <td>Thin parts, turbine blades</td>
+      </tr>
+      <tr>
+        <td>Servo press</td>
+        <td>Servo motor</td>
+        <td>Programmable</td>
+        <td>Variable</td>
+        <td>Difficult materials, low energy use</td>
+      </tr>
+    </table>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="card" style="background:var(--bg2);padding:14px">
+        <div class="card-title blue">Mechanical Press Details</div>
+        <ul style="font-size:12px;color:var(--muted);padding-left:14px;line-height:2">
+          <li>Stroke limited — speed = 0 at bottom</li>
+          <li>Very high force at end of stroke</li>
+          <li>Capacity: 2.7 to 107 MN</li>
+          <li>Best for precision parts</li>
+          <li>Higher prod. rate, easier to automate</li>
+        </ul>
+      </div>
+      <div class="card" style="background:var(--bg2);padding:14px">
+        <div class="card-title teal">Hydraulic Press Details</div>
+        <ul style="font-size:12px;color:var(--muted);padding-left:14px;line-height:2">
+          <li>Load limited — stops if capacity exceeded</li>
+          <li>Constant force through full stroke</li>
+          <li>Capacity: up to 730 MN (closed-die)</li>
+          <li>Higher initial cost, less maintenance</li>
+          <li>Boeing 747 landing gear forged in 450-MN press!</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="memory-tip">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text"><strong>Memory Aid — Press Limitations:</strong> "<em class="t">S</em>trokes (<em class="t">S</em>crew &amp; Mechanical)" = <em class="k">Energy</em> &amp; <em class="k">Stroke</em> limited. Hydraulic = <em class="k">Load</em> limited (it just stops). Hammers = <em class="k">Energy</em> limited. Key exam question: Which presses are suited for long strokes? → Screw and hydraulic (constant force throughout).</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 6: DIE DESIGN -->
+<div class="tab-content" id="tab-die">
+  <div class="sec-title">Die Design Terminology</div>
+  <div class="sec-sub">Key features, principles, materials, and lubrication</div>
+
+  <div class="diagram-wrap">
+    <svg width="100%" viewBox="0 0 680 280">
+      <defs>
+        <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <!-- Upper die block -->
+      <rect x="120" y="20" width="440" height="60" rx="6" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+      <text x="340" y="52" text-anchor="middle" font-family="Sora" font-size="12" fill="#3ecfb2" font-weight="500">Upper die</text>
+      <!-- Cavity upper -->
+      <path d="M200 80 Q210 110 240 114 L300 114 L300 80Z" fill="#5b8dee" opacity=".2" stroke="#5b8dee" stroke-width="0.8"/>
+      <path d="M480 80 Q470 110 440 114 L380 114 L380 80Z" fill="#5b8dee" opacity=".2" stroke="#5b8dee" stroke-width="0.8"/>
+      <!-- Flash land -->
+      <rect x="300" y="108" width="80" height="12" rx="2" fill="#f0a843" opacity=".35" stroke="#f0a843" stroke-width="0.8"/>
+      <!-- Gutter -->
+      <rect x="200" y="108" width="100" height="18" rx="2" fill="#8892a4" opacity=".2" stroke="#8892a4" stroke-width="0.5"/>
+      <rect x="380" y="108" width="100" height="18" rx="2" fill="#8892a4" opacity=".2" stroke="#8892a4" stroke-width="0.5"/>
+      <!-- Parting line -->
+      <line x1="120" y1="120" x2="680" y2="120" stroke="#f07060" stroke-width="1" stroke-dasharray="5,4"/>
+      <!-- Workpiece -->
+      <ellipse cx="340" cy="140" rx="110" ry="40" fill="#5b8dee" opacity=".4" stroke="#5b8dee" stroke-width="1"/>
+      <!-- Flash extensions (horizontal) -->
+      <rect x="200" y="116" width="100" height="8" rx="1" fill="#f0a843" opacity=".5"/>
+      <rect x="380" y="116" width="100" height="8" rx="1" fill="#f0a843" opacity=".5"/>
+      <!-- Lower die -->
+      <rect x="120" y="200" width="440" height="60" rx="6" fill="#1e2535" stroke="#3ecfb2" stroke-width="1"/>
+      <text x="340" y="232" text-anchor="middle" font-family="Sora" font-size="12" fill="#3ecfb2" font-weight="500">Lower die</text>
+      <!-- Labels with leaders -->
+      <text x="18" y="124" font-family="Sora" font-size="10" fill="#f07060" text-anchor="end">Parting line</text>
+      <line x1="20" y1="121" x2="118" y2="121" stroke="#f07060" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <text x="343" y="104" font-family="Sora" font-size="9" fill="#f0a843" text-anchor="middle">Flash land</text>
+      <text x="250" y="101" font-family="Sora" font-size="9" fill="#8892a4" text-anchor="middle">Gutter</text>
+      <text x="430" y="101" font-family="Sora" font-size="9" fill="#8892a4" text-anchor="middle">Gutter</text>
+      <!-- Draft angle indicator -->
+      <line x1="200" y1="80" x2="216" y2="114" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="188" y="98" font-family="Sora" font-size="9" fill="#a78bfa" text-anchor="end">Draft</text>
+      <!-- Fillet/corner labels -->
+      <text x="236" y="130" font-family="Sora" font-size="9" fill="#5ec98a">Fillet r</text>
+      <text x="415" y="90" font-family="Sora" font-size="9" fill="#5ec98a">Corner r</text>
+      <!-- Rib + Web labels inside work -->
+      <text x="340" y="135" font-family="Sora" font-size="9" fill="#fff" text-anchor="middle">Web (parallel to parting line)</text>
+      <text x="200" y="148" font-family="Sora" font-size="9" fill="#fff" text-anchor="middle">Rib ⊥</text>
+    </svg>
+    <div class="diagram-label">Impression die terminology — parting line, flash land, gutter, draft angle, fillet, corner, rib, web</div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <div class="card-title purple">Parting Line</div>
+      <p style="font-size:13px;color:var(--muted);">Plane dividing upper from lower die. Called the <em class="k">flash line</em> in impression-die forging. Selection affects grain flow, required load, and flash formation. Usually at the <em class="k">largest cross-section</em>.</p>
+    </div>
+    <div class="card">
+      <div class="card-title amber">Draft Angle</div>
+      <p style="font-size:13px;color:var(--muted);">Taper on sides of die cavity needed to <em class="k">remove part from die</em>. Part shrinks on cooling → internal angles larger than external.</p>
+      <div class="formula-box" style="padding:10px 14px;margin-top:8px;font-size:12px">
+        <div class="where">
+          Al &amp; Mg parts: <strong style="color:var(--amber)">3°</strong><br>
+          Steel parts: <strong style="color:var(--amber)">5°–7°</strong><br>
+          Internal draft: <strong style="color:var(--amber)">7°–10°</strong> (larger than external 3°–5°)<br>
+          Precision forgings: ≈ 0°
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title teal">Flash Design Guidelines</div>
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2">
+        <li>Flash thickness ≈ <em class="k">3% of max forging thickness</em></li>
+        <li>Land length = <em class="k">2–5× flash thickness</em></li>
+        <li>Excess flash flows into gutter to avoid load buildup</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title green">Radii — Fillets & Corners</div>
+      <p style="font-size:13px;color:var(--muted);">Small radii = limited metal flow + higher die surface stresses + fatigue cracking risk. <em class="k">Make radii as large as design allows</em>. Small fillet radii also cause rapid die wear from stress concentration.</p>
+    </div>
+    <div class="card">
+      <div class="card-title coral">Webs and Ribs</div>
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:1.9">
+        <li><strong style="color:#fff">Web:</strong> thin portion parallel to parting line</li>
+        <li><strong style="color:#fff">Rib:</strong> thin portion perpendicular to parting line</li>
+        <li>Both cause difficulty as they become thinner</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title blue">Die Materials Requirements</div>
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:1.9">
+        <li>Strength &amp; toughness at elevated temp</li>
+        <li>Hardenability, uniform hardening</li>
+        <li>Resistance to thermal/mechanical shock</li>
+        <li>Wear resistance (scale in hot forging)</li>
+        <li>Common: tool/die steels with Cr, Ni, Mo, V</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <div class="card-title amber">Die Failure Causes</div>
+    <div class="grid3">
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Improper die design</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Wrong die material</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Bad heat treatment</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Overheating / heat checking</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Excessive die wear</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Overloading</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Misalignment of die components</div>
+      <div style="font-size:12px;color:var(--muted)"><span style="color:var(--coral)">●</span> Misuse / improper handling</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title teal">Lubrication Functions</div>
+    <div class="grid2">
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2">
+        <li>Reduces friction → lower forging forces</li>
+        <li>Reduces die wear → longer die life</li>
+        <li>Controls metal flow into die cavity</li>
+      </ul>
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2">
+        <li>Acts as thermal barrier (hot workpiece ↔ cold dies)</li>
+        <li>Acts as parting agent (prevents sticking)</li>
+        <li>Exception: <em class="k">Coining uses NO lubricant</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 7: DEFECTS -->
+<div class="tab-content" id="tab-defects">
+  <div class="sec-title">Forgeability & Forging Defects</div>
+  <div class="sec-sub">Material forgeability tests, common defects, and how to prevent them</div>
+
+  <div class="card">
+    <div class="card-title amber">Forgeability Definition</div>
+    <p>Forgeability = capability of material to undergo deformation in forging <em class="k">without cracking</em>. Rated on: ductility &amp; strength, forging temperature required, frictional behavior, quality of forgings produced.</p>
+  </div>
+
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <div class="card-title teal">Test 1: Upsetting Test</div>
+      <p style="font-size:13px;color:var(--muted);">Solid cylinder upset between flat dies. <em class="k">Greater deformation before surface cracks appear = higher forgeability</em>. Simple, widely accepted.</p>
+    </div>
+    <div class="card">
+      <div class="card-title blue">Test 2: Hot-Twist Test</div>
+      <p style="font-size:13px;color:var(--muted);">Round specimen twisted continuously until failure at different temperatures. Temperature where <em class="k">maximum twists before failure</em> = optimal forging temperature. Especially useful for steels.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Forgeability Rankings (Decreasing Order)</div>
+  <table class="data-table" style="margin-top:12px">
+    <tr><th>Rank</th><th>Material</th><th>Hot Forging Temp (°C)</th><th>Forgeability</th></tr>
+    <tr><td>1</td><td>Aluminum alloys</td><td>400–550</td><td><span class="badge badge-teal">Highest</span></td></tr>
+    <tr><td>2</td><td>Magnesium alloys</td><td>250–350</td><td><span class="badge badge-teal">Very High</span></td></tr>
+    <tr><td>3</td><td>Copper alloys</td><td>600–900</td><td><span class="badge badge-teal">High</span></td></tr>
+    <tr><td>4</td><td>Carbon &amp; low-alloy steels</td><td>850–1,150</td><td><span class="badge badge-amber">Good</span></td></tr>
+    <tr><td>5</td><td>Stainless steels (Martensitic/Austenitic)</td><td>1,100–1,250</td><td><span class="badge badge-amber">Moderate</span></td></tr>
+    <tr><td>6</td><td>Titanium alloys</td><td>700–950</td><td><span class="badge badge-amber">Moderate</span></td></tr>
+    <tr><td>7</td><td>Nickel-based superalloys</td><td>1,050–1,200</td><td><span class="badge badge-coral">Lower</span></td></tr>
+    <tr><td>8</td><td>Tungsten alloys</td><td>1,200–1,300</td><td><span class="badge badge-coral">Lowest</span></td></tr>
+  </table>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Common Forging Defects</div>
+  <div class="grid2" style="margin-top:12px">
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <div class="card-title coral">Laps (Due to Web Buckling)</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background:var(--coral)">1</div>
+          <div class="step-content"><h4>Insufficient blank volume</h4><p>Not enough material to fill die cavity</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--coral)">2</div>
+          <div class="step-content"><h4>Web buckles during forging</h4><p>Thin web region folds over itself</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--coral)">3</div>
+          <div class="step-content"><h4>Laps form in finished forging</h4><p>Structural weakness, stress raisers</p></div>
+        </div>
+      </div>
+      <div class="exam-tip" style="padding:8px 12px;margin-top:8px">
+        <div class="tip-text"><strong>Fix:</strong> Increase web thickness</div>
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <div class="card-title blue">Internal Cracks (Oversized Billet)</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">1</div>
+          <div class="step-content"><h4>Oversized blank volume</h4><p>Excess material in the die</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">2</div>
+          <div class="step-content"><h4>Die cavities fill prematurely</h4><p>Excess material has nowhere to go</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">3</div>
+          <div class="step-content"><h4>Material flows past filled regions</h4><p>Internal cracks develop in ribs</p></div>
+        </div>
+      </div>
+      <div class="exam-tip" style="padding:8px 12px;margin-top:8px">
+        <div class="tip-text"><strong>Fix:</strong> Precise blank volume control</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <div class="card-title purple">Other Defect Sources</div>
+    <div class="grid2">
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2">
+        <li>Surface cracking (barreling, hot/cold)</li>
+        <li>Nonuniform deformation in die cavity</li>
+        <li>Temperature gradients in workpiece</li>
+      </ul>
+      <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2">
+        <li>Microstructural changes (phase transformations)</li>
+        <li>End grains: grain flow reaches surface perpendicularly → stress raisers</li>
+        <li>Die misalignment during forging</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <div class="tip-icon">★</div>
+    <div class="tip-text"><strong>Key Exam Point:</strong> Forging defects can cause fatigue failures, corrosion, and wear in service. Inspection before placing parts in service is critical — especially in aerospace applications. Computer simulation (e.g., DEFORM software using FEM) is now used to predict and avoid defects in die design.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 8: FORMULA SHEET -->
+<div class="tab-content" id="tab-formulasheet">
+  <div class="sec-title">Formula Quick Reference</div>
+  <div class="sec-sub">All equations in one place — print this before the exam</div>
+
+  <div class="grid2">
+    <div class="formula-box">
+      <div class="eq-label">True Strain</div>
+      <div class="eq">ε = ln(h₀ / h)</div>
+      <div class="where">h₀ = initial height, h = current height</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Flow Stress</div>
+      <div class="eq">Yf = K × εⁿ</div>
+      <div class="where">K = strength coefficient, n = strain hardening exponent<br>Hot forging: n = 0, so Yf = Y (yield strength)</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Ideal Forging Force</div>
+      <div class="eq">F = Yf × A</div>
+      <div class="where">A = cross-sectional area (= V/h from volume constancy)</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Open-Die Force with Friction</div>
+      <div class="eq">F = Kf × Yf × A</div>
+      <div class="where">Kf = 1 + (0.4μD/h)</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Impression-Die / Flashless Force</div>
+      <div class="eq">F = Kf × Yf × A</div>
+      <div class="where">A includes flash area; Kf from table (6, 8, or 10)</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Forging Force (Kalpakjian Form)</div>
+      <div class="eq">F = Yf × πr² × (1 + 2μr/3h)</div>
+      <div class="where">r = instantaneous radius, h = height, μ = friction</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Friction Hill (Die Pressure)</div>
+      <div class="eq">p = Y × e^(2μ(r₀−r)/h)</div>
+      <div class="where">Maximum at center (r=0), minimum at outer edge (r=r₀)</div>
+    </div>
+    <div class="formula-box">
+      <div class="eq-label">Hubbing Force</div>
+      <div class="eq">F = 3 × UTS × A</div>
+      <div class="where">UTS = ultimate tensile strength, A = projected area of impression</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Kf Values Summary</div>
+  <table class="data-table">
+    <tr><th>Process / Shape</th><th>Kf</th></tr>
+    <tr><td>Simple shapes, without flash (flashless)</td><td><span class="badge badge-teal">3–5</span></td></tr>
+    <tr><td>Simple shapes, with flash</td><td><span class="badge badge-amber">5–8 / 6.0</span></td></tr>
+    <tr><td>Complex shapes, with flash</td><td><span class="badge badge-amber">8–12 / 8.0</span></td></tr>
+    <tr><td>Very complex shapes with flash</td><td><span class="badge badge-coral">10.0</span></td></tr>
+    <tr><td>Coining (flashless, top + bottom)</td><td><span class="badge badge-coral">6.0</span></td></tr>
+  </table>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Key Numbers to Remember</div>
+  <div class="gloss-grid" style="margin-top:12px">
+    <div class="gloss-item"><div class="gloss-term">Draft angle — Al/Mg</div><div class="gloss-def">3° external; precision = near 0°</div></div>
+    <div class="gloss-item"><div class="gloss-term">Draft angle — Steel</div><div class="gloss-def">5°–7° external; internal 7°–10°</div></div>
+    <div class="gloss-item"><div class="gloss-term">Flash thickness</div><div class="gloss-def">≈ 3% of max forging thickness</div></div>
+    <div class="gloss-item"><div class="gloss-term">Land length</div><div class="gloss-def">2–5× flash thickness</div></div>
+    <div class="gloss-item"><div class="gloss-term">Heading L/D limit</div><div class="gloss-def">&lt; 3:1 to prevent buckling</div></div>
+    <div class="gloss-item"><div class="gloss-term">Hot forging tolerance</div><div class="gloss-def">±0.5–1% of dimension</div></div>
+    <div class="gloss-item"><div class="gloss-term">Precision forging tolerance</div><div class="gloss-def">±0.25 mm</div></div>
+    <div class="gloss-item"><div class="gloss-term">Hydraulic press max (closed-die)</div><div class="gloss-def">730 MN</div></div>
+    <div class="gloss-item"><div class="gloss-term">Power drop hammer energy</div><div class="gloss-def">Up to 1,150 kJ</div></div>
+    <div class="gloss-item"><div class="gloss-term">Swaging max diameter</div><div class="gloss-def">~150 mm</div></div>
+    <div class="gloss-item"><div class="gloss-term">Piercing pressure</div><div class="gloss-def">3–5× material strength</div></div>
+    <div class="gloss-item"><div class="gloss-term">Coining pressure</div><div class="gloss-def">5–6× material strength</div></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:22px">Key Glossary</div>
+  <div class="gloss-grid" style="margin-top:12px">
+    <div class="gloss-item"><div class="gloss-term">Upsetting</div><div class="gloss-def">Open-die compression of cylinder — height decreases, diameter increases</div></div>
+    <div class="gloss-item"><div class="gloss-term">Barreling</div><div class="gloss-def">Bulging of sides in upsetting due to friction at die interfaces</div></div>
+    <div class="gloss-item"><div class="gloss-term">Flash</div><div class="gloss-def">Excess metal flowing into gap between dies — serves functional purpose</div></div>
+    <div class="gloss-item"><div class="gloss-term">Friction Hill</div><div class="gloss-def">Bell-shaped pressure distribution peaking at workpiece center</div></div>
+    <div class="gloss-item"><div class="gloss-term">End Grain</div><div class="gloss-def">Grain boundaries exposed perpendicularly to surface — stress raiser, corrosion site</div></div>
+    <div class="gloss-item"><div class="gloss-term">Fullering</div><div class="gloss-def">Open-die op with convex dies to redistribute metal pre-forging</div></div>
+    <div class="gloss-item"><div class="gloss-term">Edging</div><div class="gloss-def">Like fullering but concave dies — gathers metal into localized region</div></div>
+    <div class="gloss-item"><div class="gloss-term">Cogging</div><div class="gloss-def">Sequential compressions along bar length to reduce cross-section</div></div>
+    <div class="gloss-item"><div class="gloss-term">Precision Forging</div><div class="gloss-def">Near/net-shape forging — minimal machining needed, tight tolerances</div></div>
+    <div class="gloss-item"><div class="gloss-term">Isothermal Forging</div><div class="gloss-def">Dies at same temp as workpiece — low forces, no heat loss, complex shapes</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TAB 9: QUIZ -->
+<div class="tab-content" id="tab-quiz">
+  <div class="sec-title">Exam Practice Quiz</div>
+  <div class="sec-sub">10 exam-style questions — test your knowledge</div>
+
+  <!-- Q1 -->
+  <div class="quiz-q">
+    <p>1. In open-die forging, the "barreling effect" is primarily caused by:</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q1" value="a"> A. Excessive forging speed</label>
+      <label><input type="radio" name="q1" value="b"> B. Friction at the die–workpiece interface resisting outward flow</label>
+      <label><input type="radio" name="q1" value="c"> C. Insufficient workpiece temperature</label>
+      <label><input type="radio" name="q1" value="d"> D. Incorrect die draft angle</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q1','b',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q1"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz-q">
+    <p>2. The forging shape factor Kf in the formula F = Kf × Yf × A for open-die forging is given by:</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q2" value="a"> A. Kf = 1 + (0.4μD/h)</label>
+      <label><input type="radio" name="q2" value="b"> B. Kf = μD/h</label>
+      <label><input type="radio" name="q2" value="c"> C. Kf = 1 + (μD/4h)</label>
+      <label><input type="radio" name="q2" value="d"> D. Kf = 1 − (0.4μD/h)</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q2','a',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q2"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz-q">
+    <p>3. Flash in impression-die forging serves what primary purpose?</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q3" value="a"> A. It is simply wasted material that must be removed</label>
+      <label><input type="radio" name="q3" value="b"> B. It reduces the required forging force</label>
+      <label><input type="radio" name="q3" value="c"> C. It restricts outward metal flow and builds pressure to fill die cavity</label>
+      <label><input type="radio" name="q3" value="d"> D. It prevents barreling of the workpiece</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q3','c',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q3"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="quiz-q">
+    <p>4. Which forging machine is classified as "load limited"?</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q4" value="a"> A. Mechanical press</label>
+      <label><input type="radio" name="q4" value="b"> B. Screw press</label>
+      <label><input type="radio" name="q4" value="c"> C. Hydraulic press</label>
+      <label><input type="radio" name="q4" value="d"> D. Drop hammer</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q4','c',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q4"></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="quiz-q">
+    <p>5. The Kf value for "very complex shapes with flash" in impression-die forging is:</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q5" value="a"> A. 3–5</label>
+      <label><input type="radio" name="q5" value="b"> B. 5–8</label>
+      <label><input type="radio" name="q5" value="c"> C. 8.0</label>
+      <label><input type="radio" name="q5" value="d"> D. 10.0</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q5','d',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q5"></div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="quiz-q">
+    <p>6. In flashless forging, what happens if the starting blank volume is too large?</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q6" value="a"> A. Die cavity will not fill completely</label>
+      <label><input type="radio" name="q6" value="b"> B. Excessive pressures may damage the die or press</label>
+      <label><input type="radio" name="q6" value="c"> C. Flash will form automatically</label>
+      <label><input type="radio" name="q6" value="d"> D. The workpiece will crack due to high strain</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q6','b',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q6"></div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="quiz-q">
+    <p>7. In the heading operation (upset forging), the unsupported length-to-diameter ratio must generally be kept less than:</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q7" value="a"> A. 1:1</label>
+      <label><input type="radio" name="q7" value="b"> B. 2:1</label>
+      <label><input type="radio" name="q7" value="c"> C. 3:1</label>
+      <label><input type="radio" name="q7" value="d"> D. 5:1</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q7','c',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q7"></div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="quiz-q">
+    <p>8. What advantage does isothermal forging (hot-die forging) provide compared to conventional hot forging?</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q8" value="a"> A. Lower die cost and higher production rate</label>
+      <label><input type="radio" name="q8" value="b"> B. No heat loss from workpiece → lower forging load, better material flow, complex net-shape parts</label>
+      <label><input type="radio" name="q8" value="c"> C. Eliminates the need for lubricant</label>
+      <label><input type="radio" name="q8" value="d"> D. Produces better surface finish than cold forging</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q8','b',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q8"></div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="quiz-q">
+    <p>9. In open-die forging, true strain ε at height h (from initial h₀) is:</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q9" value="a"> A. ε = (h₀ − h)/h₀</label>
+      <label><input type="radio" name="q9" value="b"> B. ε = h/h₀</label>
+      <label><input type="radio" name="q9" value="c"> C. ε = ln(h₀/h)</label>
+      <label><input type="radio" name="q9" value="d"> D. ε = ln(h/h₀)</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q9','c',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q9"></div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="quiz-q">
+    <p>10. Which type of open-die forging operation uses CONCAVE die surfaces to gather metal into a localized region?</p>
+    <div class="quiz-opt">
+      <label><input type="radio" name="q10" value="a"> A. Cogging</label>
+      <label><input type="radio" name="q10" value="b"> B. Fullering</label>
+      <label><input type="radio" name="q10" value="c"> C. Edging</label>
+      <label><input type="radio" name="q10" value="d"> D. Upsetting</label>
+    </div>
+    <button class="check-btn" onclick="checkQ('q10','c',this)">Check Answer</button>
+    <div class="answer-reveal" id="ans-q10"></div>
+  </div>
+
+  <div id="score-display" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;margin-top:16px">
+    <div style="font-size:36px;font-family:'Crimson Pro',serif;color:var(--amber)" id="score-num">0/10</div>
+    <div style="font-size:14px;color:var(--muted);margin-top:4px" id="score-msg"></div>
+  </div>
+</div>
+
+</div><!-- end page-wrap -->
+
+<script src="script.js"></script>
+</body>
+</html>
